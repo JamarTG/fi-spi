@@ -1,7 +1,5 @@
-import React, { useState, useEffect, useRef } from "react";
-import { MapContainer, TileLayer, LayersControl } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-import { JAMAICA_MAP_CONFIG } from "../../constants";
+import React, { useState, useEffect, useRef } from "react";
 import { formatTime } from "./utils";
 import ActiveFires from "./components/ActiveFires";
 import MapTitle from "../../components/MapTitle";
@@ -9,6 +7,7 @@ import FireSpreadLegend from "./components/FireSpreadLegend";
 import FireOrigins from "./components/FireOrigins";
 import FireSpreadPolygon from "./components/FireSpreadPolygon";
 import WindVectors from "./components/WindVectors";
+import MapOfJamaica from "../../components/MapOfJamaica";
 
 const FireSpreadSimulation: React.FC = () => {
   const [currentTime, setCurrentTime] = useState(0);
@@ -54,9 +53,7 @@ const FireSpreadSimulation: React.FC = () => {
           <div className="flex gap-2 mb-2">
             <button
               onClick={() => setIsPlaying(!isPlaying)}
-              className={`flex-1 py-2 rounded text-white ${
-                isPlaying ? "bg-[#ff4400]" : "bg-green-600 hover:bg-green-700"
-              }`}
+              className={`flex-1 py-2 rounded text-white ${isPlaying ? "bg-[#ff4400]" : "bg-green-600 hover:bg-green-700"}`}
             >
               {isPlaying ? "Pause" : "Play"}
             </button>
@@ -99,34 +96,14 @@ const FireSpreadSimulation: React.FC = () => {
 
       <ActiveFires currentTime={currentTime} />
 
-      <MapContainer
-        center={JAMAICA_MAP_CONFIG.CENTER}
-        zoom={JAMAICA_MAP_CONFIG.ZOOM}
-        scrollWheelZoom={true}
-        style={{ height: "100%", width: "100%" }}
-        maxBounds={JAMAICA_MAP_CONFIG.MAX_BOUNDS}
-        maxBoundsViscosity={1.0}
-      >
-        <LayersControl position="topleft">
-          <LayersControl.BaseLayer checked name="Satellite">
-            <TileLayer
-              url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
-              attribution="Tiles © Esri — Source: NASA, NOAA"
-            />
-          </LayersControl.BaseLayer>
-
-          <LayersControl.BaseLayer name="Street Map">
-            <TileLayer
-              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-              attribution="© OpenStreetMap contributors"
-            />
-          </LayersControl.BaseLayer>
-        </LayersControl>
-
+      <MapOfJamaica>
         <FireOrigins currentTime={currentTime} />
         <FireSpreadPolygon currentTime={currentTime} />
-        <WindVectors currentTime={currentTime} showWindVectors={showWindVectors} />
-      </MapContainer>
+        <WindVectors
+          currentTime={currentTime}
+          showWindVectors={showWindVectors}
+        />
+      </MapOfJamaica>
     </div>
   );
 };

@@ -4,11 +4,14 @@ import "leaflet/dist/leaflet.css";
 import EvacuationStatistics from "./components/EvacuationStatistics";
 import Controls from "./components/Controls";
 import MapTitle from "../../components/MapTitle";
-import { evacuationRoutes } from "./data";
+import {evacuationRoutes } from "./data";
 import RouteList from "./components/RouteList";
 import RoutePriority from "./components/RoutePriority";
 import useSimulation from "./hooks/useSimulation";
-import EvacuationRouteMap from "./components/EvacuationRouteMap";
+import MapOfJamaica from "../../components/MapOfJamaica";
+import FireZones from "./components/FireZones";
+import AllRoutes from "./components/AllRoutes";
+import EmergencyShelters from "./components/EmergencyShelters";
 
 const EvacuationRoutesC: React.FC = () => {
   const [selectedRoute, setSelectedRoute] = useState<number | null>(null);
@@ -68,15 +71,18 @@ const EvacuationRoutesC: React.FC = () => {
         <RoutePriority />
       </div>
 
-      <EvacuationRouteMap
-        showShelters={showShelters}
-        showFireZones={showFireZones}
-        showAllRoutes={showAllRoutes}
-        filteredRoutes={filteredRoutes}
-        selectedRoute={selectedRoute}
-        simulationMode={simulationMode}
-        evacuationProgress={evacuationProgress}
-      />
+      <MapOfJamaica>
+        <FireZones showFireZones={showFireZones} />
+
+        <AllRoutes
+          showAllRoutes={showAllRoutes}
+          filteredRoutes={filteredRoutes}
+          selectedRoute={selectedRoute}
+          simulationMode={simulationMode}
+          evacuationProgress={evacuationProgress}
+        />
+        <EmergencyShelters showShelters={showShelters} />
+      </MapOfJamaica>
     </div>
   );
 };

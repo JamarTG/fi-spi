@@ -10,6 +10,8 @@ interface ProposedFirebreaksProps {
 }
 
 const ProposedFirebreaksC: React.FC<ProposedFirebreaksProps> = ({ showProposed, filteredProposed, selectedFirebreak, planningMode }) => {
+  if (!showProposed) return;
+
   return (
     <div>
       {showProposed &&

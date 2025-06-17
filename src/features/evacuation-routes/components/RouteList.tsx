@@ -1,12 +1,12 @@
 import type { Dispatch, SetStateAction } from "react";
-import type { EvacationProgress, EvacuationRoutes } from "../types";
+import type { EvacuationProgress, EvacuationRoutes } from "../types";
 import { getHazardColor, getRouteColor } from "../utils";
 
 interface RouteListProps {
   filteredRoutes: EvacuationRoutes[];
   setSelectedRoute: Dispatch<SetStateAction<number | null>>;
   selectedRoute: number | null;
-  evacuationProgress: EvacationProgress;
+  evacuationProgress: EvacuationProgress;
   simulationMode: boolean;
 }
 

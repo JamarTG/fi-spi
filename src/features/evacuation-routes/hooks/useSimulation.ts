@@ -1,8 +1,8 @@
 import { useEffect, type Dispatch, type SetStateAction } from "react";
-import type { EvacationProgress } from "../types";
+import type { EvacuationProgress } from "../types";
 import { evacuationRoutes } from "../data";
 
-const useSimulation = (simulationMode: boolean, setEvacuationProgress: Dispatch<SetStateAction<EvacationProgress>>) => {
+const useSimulation = (simulationMode: boolean, setEvacuationProgress: Dispatch<SetStateAction<EvacuationProgress>>) => {
   useEffect(() => {
     if (simulationMode) {
       const interval = setInterval(() => {

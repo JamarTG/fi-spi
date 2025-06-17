@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { MapContainer, TileLayer, LayersControl } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { defensibleSpaces, existingFirebreaks, proposedFirebreaks } from "./data";
 import ProjectSummary from "./components/ProjectSummary";
@@ -13,8 +12,7 @@ import ProposedFirebreaksC from "./components/ProposedFirebreaks_C";
 import DefensibleSpaces from "./components/DefensibleSpaces";
 import MapTitle from "../../components/MapTitle";
 import WaterSources from "./components/WaterSources";
-import { JAMAICA_MAP_CONFIG } from "../../constants";
-
+import MapOfJamaica from "../../components/MapOfJamaica";
 
 const FirebreakLocations: React.FC = () => {
   const [showExisting, setShowExisting] = useState(true);
@@ -36,7 +34,6 @@ const FirebreakLocations: React.FC = () => {
 
   return (
     <div className="h-screen w-full relative flex">
- 
       <div className="top-2.5 right-2.5 z-[1000] bg-white p-4 rounded-lg shadow-lg min-w-[300px] max-h-[85vh] overflow-y-auto">
         <MapTitle title={"Firebreak Management System"} />
 
@@ -75,46 +72,17 @@ const FirebreakLocations: React.FC = () => {
         <Legend />
       </div>
 
-
-      <MapContainer
-        center={JAMAICA_MAP_CONFIG.CENTER}
-        zoom={JAMAICA_MAP_CONFIG.ZOOM}
-        scrollWheelZoom={true}
-        className="h-full w-full"
-        maxBounds={JAMAICA_MAP_CONFIG.MAX_BOUNDS}
-        maxBoundsViscosity={1.0}
-      >
-        <LayersControl position="topleft">
-          <LayersControl.BaseLayer
-            checked
-            name="Satellite"
-          >
-            <TileLayer
-              url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
-              attribution="Tiles © Esri — Source: NASA, NOAA"
-            />
-          </LayersControl.BaseLayer>
-
-          <LayersControl.BaseLayer name="Street Map">
-            <TileLayer
-              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-              attribution="© OpenStreetMap contributors"
-            />
-          </LayersControl.BaseLayer>
-        </LayersControl>
-
+      <MapOfJamaica>
         <ExistingFirebreaks showExisting={showExisting} />
-
         <ProposedFirebreaksC
           showProposed={showProposed}
           filteredProposed={filteredProposed}
           selectedFirebreak={selectedFirebreak}
           planningMode={planningMode}
         />
-
-        <DefensibleSpaces showDefensible={showDefensible} />
-        <WaterSources showWaterSources={showWaterSources} />
-      </MapContainer>
+        <DefensibleSpaces showDefensible />
+        <WaterSources showWaterSources />
+      </MapOfJamaica>
     </div>
   );
 };

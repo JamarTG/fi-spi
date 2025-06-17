@@ -1,8 +1,5 @@
-import React, { useState } from 'react';
-import { MapContainer, TileLayer, LayersControl } from "react-leaflet";
+import React, { useState } from "react";
 import "leaflet/dist/leaflet.css";
-import { MAP_CONFIG } from '../../constants';
-import FirePredictions from './components/FirePredictions';
 
 const FirePredictionMap: React.FC = () => {
   const [showPredictions, setShowPredictions] = useState(true);
@@ -25,9 +22,9 @@ const FirePredictionMap: React.FC = () => {
             Low Risk (0-39%)
           </div>
           <label className="flex items-center text-[11px]">
-            <input 
-              type="checkbox" 
-              checked={showPredictions} 
+            <input
+              type="checkbox"
+              checked={showPredictions}
               onChange={(e) => setShowPredictions(e.target.checked)}
               className="mr-1.5"
             />
@@ -36,32 +33,7 @@ const FirePredictionMap: React.FC = () => {
         </div>
       </div>
 
-      <MapContainer
-        center={MAP_CONFIG.JAMAICA_CENTER}
-        zoom={7}
-        scrollWheelZoom={true}
-        style={{ height: "100%", width: "100%" }}
-        maxBounds={MAP_CONFIG.JAMAICA_BOUNDS}
-        maxBoundsViscosity={1.0}
-      >
-        <LayersControl position="topleft">
-          <LayersControl.BaseLayer checked name="Satellite">
-            <TileLayer
-              url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
-              attribution="Tiles © Esri — Source: NASA, NOAA"
-            />
-          </LayersControl.BaseLayer>
-          
-          <LayersControl.BaseLayer name="Street Map">
-            <TileLayer
-              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-              attribution="© OpenStreetMap contributors"
-            />
-          </LayersControl.BaseLayer>
-        </LayersControl>
-
-        <FirePredictions showPredictions={showPredictions} />
-      </MapContainer>
+      {/*  */}
     </div>
   );
 };

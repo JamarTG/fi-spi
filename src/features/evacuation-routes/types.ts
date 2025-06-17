@@ -12,6 +12,6 @@ export interface EvacuationRoutes {
   population: number;
 }
 
-export interface EvacationProgress {
+export interface EvacuationProgress {
   [key: number]: number;
 }
