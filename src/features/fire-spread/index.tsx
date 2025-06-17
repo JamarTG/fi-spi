@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { MapContainer, TileLayer, LayersControl } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-import { MAP_CONFIG } from "../../constants";
+import { JAMAICA_MAP_CONFIG } from "../../constants";
 import { formatTime } from "./utils";
 import ActiveFires from "./components/ActiveFires";
 import MapTitle from "../../components/MapTitle";
@@ -100,11 +100,11 @@ const FireSpreadSimulation: React.FC = () => {
       <ActiveFires currentTime={currentTime} />
 
       <MapContainer
-        center={MAP_CONFIG.JAMAICA_CENTER}
-        zoom={MAP_CONFIG.ZOOM}
+        center={JAMAICA_MAP_CONFIG.CENTER}
+        zoom={JAMAICA_MAP_CONFIG.ZOOM}
         scrollWheelZoom={true}
         style={{ height: "100%", width: "100%" }}
-        maxBounds={MAP_CONFIG.JAMAICA_BOUNDS}
+        maxBounds={JAMAICA_MAP_CONFIG.MAX_BOUNDS}
         maxBoundsViscosity={1.0}
       >
         <LayersControl position="topleft">

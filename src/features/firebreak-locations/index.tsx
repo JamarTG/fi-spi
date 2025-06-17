@@ -13,12 +13,8 @@ import ProposedFirebreaksC from "./components/ProposedFirebreaks_C";
 import DefensibleSpaces from "./components/DefensibleSpaces";
 import MapTitle from "../../components/MapTitle";
 import WaterSources from "./components/WaterSources";
+import { JAMAICA_MAP_CONFIG } from "../../constants";
 
-const JAMAICA_CENTER: [number, number] = [18.1096, -77.2975];
-const JAMAICA_BOUNDS: [[number, number], [number, number]] = [
-  [17.5, -79],
-  [18.7, -76],
-];
 
 const FirebreakLocations: React.FC = () => {
   const [showExisting, setShowExisting] = useState(true);
@@ -81,11 +77,11 @@ const FirebreakLocations: React.FC = () => {
 
 
       <MapContainer
-        center={JAMAICA_CENTER}
-        zoom={9}
+        center={JAMAICA_MAP_CONFIG.CENTER}
+        zoom={JAMAICA_MAP_CONFIG.ZOOM}
         scrollWheelZoom={true}
         className="h-full w-full"
-        maxBounds={JAMAICA_BOUNDS}
+        maxBounds={JAMAICA_MAP_CONFIG.MAX_BOUNDS}
         maxBoundsViscosity={1.0}
       >
         <LayersControl position="topleft">
