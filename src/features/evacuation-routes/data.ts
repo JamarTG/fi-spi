@@ -1,0 +1,157 @@
+import type { EvacuationRoutes } from "./types";
+
+export const emergencyShelters = [
+  {
+    id: 1,
+    name: "National Stadium Complex",
+    lat: 18.0193,
+    lng: -76.7865,
+    capacity: 5000,
+    type: "major_shelter",
+    facilities: ["Medical", "Food", "Communications"],
+    status: "operational",
+  },
+  {
+    id: 2,
+    name: "UWI Mona Campus",
+    lat: 18.0106,
+    lng: -76.7456,
+    capacity: 3000,
+    type: "shelter",
+    facilities: ["Medical", "Food"],
+    status: "operational",
+  },
+  {
+    id: 3,
+    name: "Spanish Town Hospital",
+    lat: 17.9914,
+    lng: -76.9574,
+    capacity: 800,
+    type: "medical_center",
+    facilities: ["Medical", "Emergency Care"],
+    status: "operational",
+  },
+  {
+    id: 4,
+    name: "Portmore Community Center",
+    lat: 17.9544,
+    lng: -76.8789,
+    capacity: 1500,
+    type: "shelter",
+    facilities: ["Food", "Communications"],
+    status: "operational",
+  },
+  {
+    id: 5,
+    name: "Blue Mountain Safe Zone",
+    lat: 18.0814,
+    lng: -76.6234,
+    capacity: 500,
+    type: "temporary",
+    facilities: ["Basic Shelter"],
+    status: "standby",
+  },
+];
+
+export const activeFires = [
+  {
+    id: 1,
+    lat: 18.2,
+    lng: -77.5,
+    radius: 3000,
+    severity: "high",
+    name: "Blue Mountains Fire",
+  },
+  {
+    id: 2,
+    lat: 18.0,
+    lng: -77.1,
+    radius: 2000,
+    severity: "medium",
+    name: "Kingston Hills Fire",
+  },
+];
+
+export const evacuationRoutes: EvacuationRoutes[] = [
+  {
+    id: 1,
+    name: "Primary Route A - East Kingston",
+    path: [
+      [18.0106, -76.7456], // UWI area
+      [18.0089, -76.7623], // Half Way Tree
+      [18.0145, -76.7789], // Cross Roads
+      [18.0193, -76.7865], // National Stadium
+    ],
+    priority: "primary",
+    status: "clear",
+    capacity: "high",
+    estimatedTime: 25,
+    hazardLevel: "low",
+    population: 15000,
+  },
+  {
+    id: 2,
+    name: "Primary Route B - Spanish Town",
+    path: [
+      [18.05, -76.9], // Northern suburbs
+      [18.0234, -76.9123],
+      [18.0067, -76.9345],
+      [17.9914, -76.9574], // Spanish Town Hospital
+    ],
+    priority: "primary",
+    status: "clear",
+    capacity: "high",
+    estimatedTime: 35,
+    hazardLevel: "low",
+    population: 22000,
+  },
+  {
+    id: 3,
+    name: "Secondary Route C - Portmore",
+    path: [
+      [17.98, -76.85], // Central Kingston
+      [17.9723, -76.8634],
+      [17.9656, -76.8723],
+      [17.9544, -76.8789], // Portmore
+    ],
+    priority: "secondary",
+    status: "congested",
+    capacity: "medium",
+    estimatedTime: 45,
+    hazardLevel: "medium",
+    population: 8000,
+  },
+  {
+    id: 4,
+    name: "Emergency Route D - Blue Mountain",
+    path: [
+      [18.04, -76.72], // Eastern areas
+      [18.0567, -76.7023],
+      [18.0723, -76.6834],
+      [18.0814, -76.6234], // Blue Mountain Safe Zone
+    ],
+    priority: "emergency",
+    status: "partially_blocked",
+    capacity: "low",
+    estimatedTime: 60,
+    hazardLevel: "high",
+    population: 3500,
+  },
+  {
+    id: 5,
+    name: "Alternative Route E - Coastal",
+    path: [
+      [17.96, -76.8], // South Kingston
+      [17.9456, -76.8234],
+      [17.9334, -76.8456],
+      [17.9234, -76.8678],
+      [17.9544, -76.8789], // Portmore
+    ],
+    priority: "alternative",
+    status: "clear",
+    capacity: "medium",
+    estimatedTime: 50,
+    hazardLevel: "low",
+    population: 12000,
+  },
+];
