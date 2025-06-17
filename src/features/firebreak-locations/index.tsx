@@ -39,9 +39,9 @@ const FirebreakLocations: React.FC = () => {
   });
 
   return (
-    <div className="h-screen w-full relative">
+    <div className="h-screen w-full relative flex">
  
-      <div className="absolute top-2.5 right-2.5 z-[1000] bg-white p-4 rounded-lg shadow-lg min-w-[300px] max-h-[85vh] overflow-y-auto">
+      <div className="top-2.5 right-2.5 z-[1000] bg-white p-4 rounded-lg shadow-lg min-w-[300px] max-h-[85vh] overflow-y-auto">
         <MapTitle title={"Firebreak Management System"} />
 
         <ProjectSummary

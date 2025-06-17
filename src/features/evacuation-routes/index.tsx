@@ -35,8 +35,8 @@ const EvacuationRoutesC: React.FC = () => {
   );
 
   return (
-    <div className="h-screen w-full">
-      <div className="absolute top-[10px] right-[10px] z-[1000] bg-white p-[15px] rounded-[8px] shadow-[0_2px_10px_rgba(0,0,0,0.3)] min-w-[280px] max-h-[80vh] overflow-y-auto">
+    <div className="h-screen w-full flex">
+      <div className="top-[10px] right-[10px] z-[1000] bg-white p-[15px] rounded-[8px] shadow-[0_2px_10px_rgba(0,0,0,0.3)] min-w-[280px] max-h-[80vh] overflow-y-auto">
         <MapTitle title="Evacuation Command Center" />
 
         <EvacuationStatistics

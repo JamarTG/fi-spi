@@ -41,8 +41,8 @@ const FireSpreadSimulation: React.FC = () => {
   }, [isPlaying, playbackSpeed]);
 
   return (
-    <div className="h-screen w-full relative">
-      <div className="absolute top-2.5 right-2.5 z-[1000] bg-white p-4 rounded-lg shadow-lg min-w-[250px]">
+    <div className="h-screen w-full flex relative">
+      <div className="top-2.5 right-2.5 z-[1000] bg-white p-4 rounded-lg shadow-lg min-w-[250px]">
         <MapTitle title="Fire Spread Simulation" />
 
         <div className="mb-4 text-center">
