@@ -3,7 +3,13 @@ import { Polyline } from "react-leaflet/Polyline";
 import { Popup } from "react-leaflet/Popup";
 import List from "../../../components/List";
 import type { EvacuationProgress, EvacuationRoute } from "../types";
-import { formatEvacuationProgress, generateRouteKey, getHazardColor, getPathOptions, getRouteColor } from "../utils";
+import {
+  formatEvacuationProgress,
+  generateRouteKey,
+  getHazardColor,
+  getPathOptions,
+  getRouteColor,
+} from "../utils";
 
 interface AllRoutesProps {
   showAllRoutes: boolean;
@@ -13,14 +19,18 @@ interface AllRoutesProps {
   evacuationProgress: EvacuationProgress;
 }
 
-const AllRoutes: React.FC<AllRoutesProps> = ({ showAllRoutes, filteredRoutes, selectedRoute, simulationMode, evacuationProgress }) => {
- 
-
+const AllRoutes: React.FC<AllRoutesProps> = ({
+  showAllRoutes,
+  filteredRoutes,
+  selectedRoute,
+  simulationMode,
+  evacuationProgress,
+}) => {
   const renderEvacuationRoute = (route: EvacuationRoute) => (
     <Polyline
       key={generateRouteKey(route)}
       positions={route.path}
-      pathOptions={getPathOptions(route,selectedRoute)}
+      pathOptions={getPathOptions(route, selectedRoute)}
     >
       <Popup>
         <div className="min-w-[200px] p-2">
@@ -48,7 +58,8 @@ const AllRoutes: React.FC<AllRoutesProps> = ({ showAllRoutes, filteredRoutes, se
             </p>
             {simulationMode && (
               <div className="mt-2 p-1 bg-gray-100 rounded text-xs">
-                <span className="font-medium">Evacuation Progress:</span> {formatEvacuationProgress(evacuationProgress[route.id])}%
+                <span className="font-medium">Evacuation Progress:</span>{" "}
+                {formatEvacuationProgress(evacuationProgress[route.id])}%
               </div>
             )}
           </div>
@@ -58,12 +69,7 @@ const AllRoutes: React.FC<AllRoutesProps> = ({ showAllRoutes, filteredRoutes, se
   );
 
   if (!showAllRoutes) return null;
-  return (
-    <List
-      data={filteredRoutes}
-      renderFn={renderEvacuationRoute}
-    />
-  );
+  return <List data={filteredRoutes} renderFn={renderEvacuationRoute} />;
 };
 
 export default AllRoutes;
