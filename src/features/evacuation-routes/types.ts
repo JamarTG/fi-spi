@@ -1,6 +1,6 @@
 import type { LatLngExpression } from "leaflet";
 
-export interface EvacuationRoutes {
+export interface EvacuationRoute {
   id: number;
   name: string;
   path: LatLngExpression[];
@@ -10,6 +10,17 @@ export interface EvacuationRoutes {
   estimatedTime: number;
   hazardLevel: "high" | "medium" | "low";
   population: number;
+}
+
+export interface EmergencyShelter {
+  id: number;
+  name: string;
+  lat: number;
+  lng: number;
+  capacity: number;
+  type: string;
+  facilities: string[];
+  status: string;
 }
 
 export interface EvacuationProgress {

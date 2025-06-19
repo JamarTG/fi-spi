@@ -1,6 +1,7 @@
-import type { EvacuationRoutes } from "./types";
+import type { EmergencyShelter, EvacuationRoute } from "./types";
 
-export const emergencyShelters = [
+
+export const emergencyShelters: EmergencyShelter[] = [
   {
     id: 1,
     name: "National Stadium Complex",
@@ -72,15 +73,15 @@ export const activeFires = [
   },
 ];
 
-export const evacuationRoutes: EvacuationRoutes[] = [
+export const evacuationRoutes: EvacuationRoute[] = [
   {
     id: 1,
     name: "Primary Route A - East Kingston",
     path: [
-      [18.0106, -76.7456], // UWI area
-      [18.0089, -76.7623], // Half Way Tree
-      [18.0145, -76.7789], // Cross Roads
-      [18.0193, -76.7865], // National Stadium
+      [18.0106, -76.7456], 
+      [18.0089, -76.7623], 
+      [18.0145, -76.7789], 
+      [18.0193, -76.7865], 
     ],
     priority: "primary",
     status: "clear",
@@ -93,10 +94,10 @@ export const evacuationRoutes: EvacuationRoutes[] = [
     id: 2,
     name: "Primary Route B - Spanish Town",
     path: [
-      [18.05, -76.9], // Northern suburbs
+      [18.05, -76.9], 
       [18.0234, -76.9123],
       [18.0067, -76.9345],
-      [17.9914, -76.9574], // Spanish Town Hospital
+      [17.9914, -76.9574], 
     ],
     priority: "primary",
     status: "clear",
@@ -109,10 +110,10 @@ export const evacuationRoutes: EvacuationRoutes[] = [
     id: 3,
     name: "Secondary Route C - Portmore",
     path: [
-      [17.98, -76.85], // Central Kingston
+      [17.98, -76.85], 
       [17.9723, -76.8634],
       [17.9656, -76.8723],
-      [17.9544, -76.8789], // Portmore
+      [17.9544, -76.8789], 
     ],
     priority: "secondary",
     status: "congested",
@@ -125,10 +126,10 @@ export const evacuationRoutes: EvacuationRoutes[] = [
     id: 4,
     name: "Emergency Route D - Blue Mountain",
     path: [
-      [18.04, -76.72], // Eastern areas
+      [18.04, -76.72],
       [18.0567, -76.7023],
       [18.0723, -76.6834],
-      [18.0814, -76.6234], // Blue Mountain Safe Zone
+      [18.0814, -76.6234], 
     ],
     priority: "emergency",
     status: "partially_blocked",
@@ -141,11 +142,11 @@ export const evacuationRoutes: EvacuationRoutes[] = [
     id: 5,
     name: "Alternative Route E - Coastal",
     path: [
-      [17.96, -76.8], // South Kingston
+      [17.96, -76.8], 
       [17.9456, -76.8234],
       [17.9334, -76.8456],
       [17.9234, -76.8678],
-      [17.9544, -76.8789], // Portmore
+      [17.9544, -76.8789], 
     ],
     priority: "alternative",
     status: "clear",
